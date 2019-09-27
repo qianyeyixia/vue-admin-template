@@ -6,7 +6,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'vue Admin Template' // page title
+const name = defaultSettings.title || 'xxx后天管理系统' // page title
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -55,14 +55,17 @@ module.exports = {
     name: name,
     resolve: {
       alias: {
-        '@': resolve('src')
+        '@': resolve('src'),
+        'component':resolve('@/components'),
+        'view':resolve('@/views')
+
       }
     }
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
-
+    // config.resolve.alias.set('assets', '@/assets').set('components', '@/components').set('view', '@/views').set('style', '@/style').set('stoe', '@/store')
     // set svg-sprite-loader
     config.module
       .rule('svg')
